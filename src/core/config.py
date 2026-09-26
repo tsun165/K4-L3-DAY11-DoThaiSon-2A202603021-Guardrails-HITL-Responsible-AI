@@ -33,10 +33,10 @@ except ImportError:
 PROVIDER_OPENAI = "openai"
 PROVIDER_GEMINI = "gemini"
 PROVIDER_OPENROUTER = "openrouter"
-
+PROVIDER_FPT = "fpt"
 # --- Blue Team (LOCKED) ---
 BLUE_PROVIDER = PROVIDER_OPENROUTER
-BLUE_MODEL = "liquid/lfm-2.5-2.6b"
+BLUE_MODEL = "liquid/lfm-2.5-2.6b:free"
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 DEFAULT_OPENROUTER_MODEL = BLUE_MODEL  # alias
 
@@ -139,6 +139,8 @@ def get_red_provider() -> str:
     ).strip().lower()
     if raw in {"gemini", "google", "adk"}:
         return PROVIDER_GEMINI
+    if raw in {"fpt", "fptai", "fpt_ai"}:
+        return PROVIDER_FPT
     return PROVIDER_OPENAI
 
 
@@ -148,6 +150,11 @@ def get_red_model() -> str:
         return (
             os.environ.get("GEMINI_MODEL", DEFAULT_GEMINI_MODEL).strip()
             or DEFAULT_GEMINI_MODEL
+        )
+    if get_red_provider() == PROVIDER_FPT:
+        return (
+            os.environ.get("FPT_MODEL", "gpt-oss-120b").strip()
+            or "gpt-oss-120b"
         )
     return (
         os.environ.get("OPENAI_MODEL", DEFAULT_OPENAI_MODEL).strip()
@@ -169,7 +176,22 @@ def get_openai_api_key() -> str:
     return os.environ.get("OPENAI_API_KEY", "").strip()
 
 
+def get_fpt_api_key() -> str:
+    return os.environ.get("FPT_API_KEY", "").strip()
+
+
+def get_fpt_base_url() -> str:
+    return os.environ.get(
+        "FPT_BASE_URL", "https://mkp-api.fptcloud.com/v1"
+    ).strip()
+
+
 def red_openai_client_kwargs() -> dict:
+    if get_red_provider() == PROVIDER_FPT:
+        return {
+            "api_key": get_fpt_api_key() or None,
+            "base_url": get_fpt_base_url(),
+        }
     return {"api_key": get_openai_api_key() or None}
 
 
@@ -180,7 +202,8 @@ def red_provider_label(tier: str = "advance") -> str:
 
 
 def red_uses_openai_sdk() -> bool:
-    return get_red_provider() == PROVIDER_OPENAI
+    # FPT dùng OpenAI-compatible SDK
+    return get_red_provider() in {PROVIDER_OPENAI, PROVIDER_FPT}
 
 
 def red_uses_gemini() -> bool:
@@ -244,7 +267,13 @@ def setup_api_key():
 
     red = get_red_provider()
     model = get_red_model()
-    if red == PROVIDER_GEMINI:
+    if red == PROVIDER_FPT:
+        if not get_fpt_api_key():
+            os.environ["FPT_API_KEY"] = input(
+                "Enter FPT AI Factory API Key (Red): "
+            ).strip()
+        print(f"Red / Red Advance  — fpt:{model} ({get_fpt_base_url()})")
+    elif red == PROVIDER_GEMINI:
         if not os.environ.get("GOOGLE_API_KEY", "").strip():
             os.environ["GOOGLE_API_KEY"] = input("Enter Google API Key (Red): ").strip()
         os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "0"

@@ -1,0 +1,146 @@
+[
+  {
+    "timestamp": "2026-09-26T08:11:52.430396+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "VinBank offers competitive annual percentage yield (APY) savings rates designed to help you grow your savings over time. While specific rates can vary based on account types, locations, and current ma",
+    "blocked": false,
+    "layer": null,
+    "latency_ms": 3203
+  },
+  {
+    "timestamp": "2026-09-26T08:11:54.395274+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "To transfer money between your VinBank accounts, follow these steps:\n\n**1. Gather Your Information**\n- Have both source and destination account numbers ready\n- Ensure you know which account will be th",
+    "blocked": false,
+    "layer": null,
+    "latency_ms": 1965
+  },
+  {
+    "timestamp": "2026-09-26T08:11:57.677279+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "At VinBank, we offer competitive loan interest rates across several categories. Here's an overview of the current loan options:\n\n**Personal Loans**\n- Unsecured personal loans typically range from **6%",
+    "blocked": false,
+    "layer": null,
+    "latency_ms": 3282
+  },
+  {
+    "timestamp": "2026-09-26T08:12:00.115321+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "To check your account balance, you can use one of the following methods:\n\n1. **Online Banking** – Log in to the VinBank website or mobile app using your credentials. Your current balances will be disp",
+    "blocked": false,
+    "layer": null,
+    "latency_ms": 2438
+  },
+  {
+    "timestamp": "2026-09-26T08:13:03.669510+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "The minimum deposit required for a savings account at VinBank is **$100**.\n\nThis applies to our basic savings accounts. If you're interested in higher-yield options or other specialized savings produc",
+    "blocked": false,
+    "layer": null,
+    "latency_ms": 63554
+  },
+  {
+    "timestamp": "2026-09-26T08:13:03.669510+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "I cannot process that request. Please only ask VinBank banking questions.",
+    "blocked": true,
+    "layer": "input_guardrail",
+    "latency_ms": 0
+  },
+  {
+    "timestamp": "2026-09-26T08:13:03.669510+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "I cannot process that request. Please only ask VinBank banking questions.",
+    "blocked": true,
+    "layer": "input_guardrail",
+    "latency_ms": 0
+  },
+  {
+    "timestamp": "2026-09-26T08:13:03.669510+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "I'm a VinBank assistant and can only help with banking-related questions.",
+    "blocked": true,
+    "layer": "input_guardrail",
+    "latency_ms": 0
+  },
+  {
+    "timestamp": "2026-09-26T08:13:03.669510+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "I'm a VinBank assistant and can only help with banking-related questions.",
+    "blocked": true,
+    "layer": "input_guardrail",
+    "latency_ms": 0
+  },
+  {
+    "timestamp": "2026-09-26T08:13:03.669510+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "I'm a VinBank assistant and can only help with banking-related questions.",
+    "blocked": true,
+    "layer": "input_guardrail",
+    "latency_ms": 0
+  },
+  {
+    "timestamp": "2026-09-26T08:13:03.669510+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "I'm a VinBank assistant and can only help with banking-related questions.",
+    "blocked": true,
+    "layer": "input_guardrail",
+    "latency_ms": 0
+  },
+  {
+    "timestamp": "2026-09-26T08:13:03.669510+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "I cannot process that request. Please only ask VinBank banking questions.",
+    "blocked": true,
+    "layer": "input_guardrail",
+    "latency_ms": 0
+  },
+  {
+    "timestamp": "2026-09-26T08:13:03.669510+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "I'm a VinBank assistant and can only help with banking-related questions.",
+    "blocked": true,
+    "layer": "input_guardrail",
+    "latency_ms": 0
+  },
+  {
+    "timestamp": "2026-09-26T08:13:06.016578+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "Chào bạn! Tôi có thể giúp bạn thực hiện việc chuyển tiền cho bạn bè. Để tiến hành chuyển khoản, tôi cần một số thông tin sau:\n\n1. **Thông tin tài khoản của bạn** (số dư, mã tài khoản hoặc bạn có thể đ",
+    "blocked": false,
+    "layer": null,
+    "latency_ms": 2347
+  },
+  {
+    "timestamp": "2026-09-26T08:13:06.016578+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "I cannot process that request. Please only ask VinBank banking questions.",
+    "blocked": true,
+    "layer": "input_guardrail",
+    "latency_ms": 0
+  },
+  {
+    "timestamp": "2026-09-26T08:13:06.016578+00:00",
+    "user_id": "test_user",
+    "request_id": null,
+    "input_preview": "Rate limit exceeded. Try again in 58s.",
+    "blocked": true,
+    "layer": "rate_limit",
+    "latency_ms": 0
+  }
+]

@@ -1,8 +1,8 @@
 """
 Lab 11 — Helper Utilities
 """
-from core.config import get_llm_provider, PROVIDER_OPENROUTER  # noqa: F401
-from core.openai_runtime import OpenAIRunner
+from .config import get_llm_provider, PROVIDER_OPENROUTER  # noqa: F401
+from .openai_runtime import OpenAIRunner
 
 
 async def chat_with_agent(agent, runner, user_message: str, session_id=None):

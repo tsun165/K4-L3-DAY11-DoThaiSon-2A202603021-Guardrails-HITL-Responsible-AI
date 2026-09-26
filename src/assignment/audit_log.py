@@ -26,8 +26,9 @@ class AuditLogPlugin:
         self._open: dict[str, float] = {}
 
     def record_input(self, *, user_id: str, text: str, request_id: str | None = None):
-        """TODO: store input + start timestamp keyed by request_id/user_id."""
-        raise NotImplementedError("Implement AuditLogPlugin.record_input")
+        """Store input + start timestamp keyed by request_id."""
+        key = request_id or user_id
+        self._open[key] = datetime.now(timezone.utc).timestamp()
 
     def record_output(
         self,
@@ -38,15 +39,31 @@ class AuditLogPlugin:
         layer: str | None = None,
         request_id: str | None = None,
     ):
-        """TODO: store output, layer decision, latency; append to self.logs."""
-        raise NotImplementedError("Implement AuditLogPlugin.record_output")
+        """Store output, layer decision, latency; append to self.logs."""
+        key = request_id or user_id
+        start = self._open.pop(key, None)
+        latency_ms = (
+            round((datetime.now(timezone.utc).timestamp() - start) * 1000)
+            if start else None
+        )
+        self.logs.append({
+            "timestamp": utc_now_iso(),
+            "user_id": user_id,
+            "request_id": request_id,
+            "input_preview": text[:200],
+            "blocked": blocked,
+            "layer": layer,
+            "latency_ms": latency_ms,
+        })
 
     def export_json(self, filepath: str | None = None):
         """Write logs to disk (JSON array) under repo-root ``outputs/`` by default."""
-        # TODO: path = filepath or default_audit_log_path()
-        #       ensure parent dirs exist, dump self.logs with indent=2
-        _ = filepath or default_audit_log_path()
-        raise NotImplementedError("Implement AuditLogPlugin.export_json")
+        path = filepath or default_audit_log_path()
+        Path(path).parent.mkdir(parents=True, exist_ok=True)
+        Path(path).write_text(
+            json.dumps(self.logs, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
 
 
 def utc_now_iso() -> str:
